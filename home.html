@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant Mobile Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <style>
+    /* Custom CSS for enhanced styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .ui-page {
+      background: url('backimg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh; /* Ensure full page coverage */
+    }
+
+    .ui-header {
+      background-color: rgba(51, 51, 51, 0.8);
+      color: #ffffff;
+      height: 80px; /* Increased header height */
+      text-align: center;
+      line-height: 80px; /* Align text vertically */
+    }
+
+    h1 {
+      color: #ffcc00; /* Golden color for header */
+      text-shadow: 2px 2px 4px #000000; /* Subtle shadow */
+      font-size: 28px; /* Larger font size for header */
+    }
+
+    .ui-footer {
+      background-color: rgba(51, 51, 51, 0.8);
+      color: #ffffff;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .ui-content {
+      padding: 20px;
+      min-height: calc(100vh - 120px); /* Account for header and footer heights */
+      overflow-y: auto;
+    }
+
+    .ui-btn {
+      background-color: #47c5ff !important;
+      color: #ffffff !important;
+      font-size: 14px; /* Smaller button text */
+      margin: 10px auto; /* Center buttons */
+      width: 60%; /* Ensure smaller size */
+    }
+
+    .gallery-image {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px #000000;
+    }
+
+    .bold-text {
+      font-weight: bold;
+      font-size: 18px; /* Larger font for informational text */
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script>
+    // jQuery functionalities for animations and page transitions
+    $(document).on("pagecreate", "#home", function() {
+      // Button click animation
+      $(".ui-btn").on("click", function() {
+        $(this).effect("bounce", { times: 1, distance: 5 }, 300);
+      });
+    });
+
+    $(document).on("pageinit", "#menu, #gallery", function() {
+      // Transition animation
+      $(this).css("opacity", 0);
+      $(this).animate({ opacity: 1 }, 1000);
+    });
+
+    // Show popup when clicking on gallery image
+    $(document).on("click", ".gallery-image", function() {
+      var src = $(this).attr("src");
+      $("#image-popup img").attr("src", src);
+      $("#image-popup").popup("open");
+    });
+  </script>
+</head>
+<body>
+
+<!-- Start of the Home Page -->
+<div data-role="page" id="home">
+
+  <div data-role="header" data-position="fixed">
+    <h1>Restaurant</h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+    <h2 class="bold-text">Welcome to Our Restaurant</h2>
+    <p class="bold-text">Enjoy our delicious food!</p>
+    <a href="#menu" class="ui-btn ui-corner-all">View Menu</a>
+    <a href="#gallery" class="ui-btn ui-corner-all">Gallery</a>
+    <img src="restaurant.avif" alt="Restaurant image" class="gallery-image" style="width: 20%;">
+  </div><!-- /content -->
+
+  <div data-role="footer" data-position="fixed">
+    <h4>© 2024 Restaurant</h4>
+  </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of the Menu Page -->
+<div data-role="page" id="menu">
+
+  <div data-role="header" data-position="fixed">
+    <a href="#home" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+    <h1>Menu</h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+    <h2 class="bold-text">Our Menu</h2>
+    <img src="main.jpg" alt="Food image" class="gallery-image" height="300" width="700">
+    <p class="bold-text">Menu item 1 - Appetizer</p>
+    <p class="bold-text">Menu item 2 - Dishes</p>
+    <p class="bold-text">Menu item 3 - Dessert</p>
+    <p class="bold-text">Menu item 4 - Cold drinks</p>
+  </div><!-- /content -->
+
+  <div data-role="footer" data-position="fixed">
+    <h4>© 2024 Restaurant</h4>
+  </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of the Gallery Page -->
+<div data-role="page" id="gallery">
+
+  <div data-role="header" data-position="fixed">
+    <a href="#home" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+    <h1>Gallery</h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+    <h2 class="bold-text">Our Gallery</h2>
+    <!-- Gallery images -->
+    <img src="Image1.jpg" alt="Image 1" class="gallery-image">
+    <img src="Image2.jpg" alt="Image 2" class="gallery-image">
+    <img src="Image3.jpg" alt="Image 3" class="gallery-image">
+    <img src="Image4.jpg" alt="Image 4" class="gallery-image">
+  </div><!-- /content -->
+
+  <div data-role="footer" data-position="fixed">
+    <h4>© 2024 Restaurant</h4>
+  </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Image Popup -->
+<div data-role="popup" id="image-popup">
+  <img src="" alt="Gallery image" style="width: 100%; height: auto;">
+</div>
+
+</body>
+</html>
